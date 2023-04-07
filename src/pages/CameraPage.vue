@@ -7,15 +7,24 @@
       <q-btn round color="grey-10" size="lg" icon="eva-camera" />
 
       <div class="row justify-center q-ma-md">
-        <q-input class="col col-sm-8" v-model="post.caption" label="Caption" dense />
+        <q-input
+          class="col col-sm-8"
+          v-model="post.caption"
+          label="Caption"
+          dense
+        />
       </div>
       <div class="row justify-center q-ma-md">
-        <q-input class="col col-sm-8" v-model="post.location" label="Location" dense>
+        <q-input
+          class="col col-sm-8"
+          v-model="post.location"
+          label="Location"
+          dense
+        >
           <template v-slot:append>
             <q-btn round dense flat icon="eva-navigation-2-outline" />
           </template>
         </q-input>
-
       </div>
       <div class="row justify-center q-mt-xl">
         <q-btn unelevated rounded color="primary" label="Post Image" />
@@ -25,35 +34,37 @@
 </template>
 
 <script>
-import { uid } from 'quasar'
-import { defineComponent } from 'vue'
+import { uid } from "quasar";
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'CameraPage',
+  name: "CameraPage",
   data() {
     return {
       post: {
         id: uid(),
-        caption: '',
-        location: '',
+        caption: "",
+        location: "",
         photo: null,
-        date: Date.now()
-      }
-    }
+        date: Date.now(),
+      },
+    };
   },
   methods: {
     initCamera() {
-      navigator.mediaDevices.getUserMedia({
-        video: true
-      }).then(stream => {
-        this.$refs.video.srcObject = stream
-      })
-    }
+      navigator.mediaDevices
+        .getUserMedia({
+          video: true,
+        })
+        .then((stream) => {
+          this.$refs.video.srcObject = stream;
+        });
+    },
   },
   mounted() {
-    this.initCamera
-  }
-})
+    this.initCamera();
+  },
+});
 </script>
 
 <style lang="scss">
