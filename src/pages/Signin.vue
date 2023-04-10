@@ -44,7 +44,6 @@ export default {
     return {
       email: ref(""),
       password: ref(""),
-      dense: ref(false),
     };
   },
 };

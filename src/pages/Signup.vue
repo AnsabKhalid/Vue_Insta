@@ -1,60 +1,64 @@
 <template>
-  <div class="q-pa-md constraint-signup" position="fixed-center">
-    <div class="header">
-      <q-toolbar-title class="text-grand-hotel text-bold">
-        Vue Instagram
-      </q-toolbar-title>
+  <form @submit="signup()">
+    <div class="q-pa-md constraint-signup" position="fixed-center">
+      <div class="header">
+        <q-toolbar-title class="text-grand-hotel text-bold">
+          Vue Instagram
+        </q-toolbar-title>
+      </div>
+      <div class="text-center">
+        <span>Sign up to see photos and videos from your friends.</span>
+      </div>
+      <div>
+        <q-btn
+          color="primary"
+          icon="eva-facebook"
+          label="Log in with Facebook"
+        />
+      </div>
+
+      <div class="">
+        <q-input
+          class="text-box"
+          outlined
+          v-model="form.mobile_number"
+          label="Mobile Number or email"
+          placeholder="Mobile Number or email"
+        />
+      </div>
+      <div class="">
+        <q-input
+          class="text-box"
+          outlined
+          v-model="full_name"
+          label="Full Name"
+          placeholder="Full Name"
+        />
+      </div>
+      <div class="">
+        <q-input
+          class="text-box"
+          outlined
+          v-model="user_name"
+          label="Username"
+          placeholder="Username"
+        />
+      </div>
+      <div class="">
+        <q-input
+          class="text-box"
+          type="password"
+          outlined
+          v-model="password"
+          label="Password"
+          placeholder="Password"
+        />
+      </div>
+      <div>
+        <q-btn type="submit" color="secondary" label="Sign up" />
+      </div>
     </div>
-    <div class="text-center">
-      <span>Sign up to see photos and videos from your friends.</span>
-    </div>
-    <div>
-      <q-btn color="primary" icon="eva-facebook" label="Log in with Facebook" />
-    </div>
-    <div>
-      <hr />
-    </div>
-    <div class="">
-      <q-input
-        class="text-box"
-        outlined
-        v-model="mobile_number"
-        label="Mobile Number or email"
-        placeholder="Mobile Number or email"
-      />
-    </div>
-    <div class="">
-      <q-input
-        class="text-box"
-        outlined
-        v-model="full_name"
-        label="Full Name"
-        placeholder="Full Name"
-      />
-    </div>
-    <div class="">
-      <q-input
-        class="text-box"
-        outlined
-        v-model="user_name"
-        label="Username"
-        placeholder="Username"
-      />
-    </div>
-    <div class="">
-      <q-input
-        class="text-box"
-        type="password"
-        outlined
-        v-model="password"
-        label="Password"
-        placeholder="Password"
-      />
-    </div>
-    <div>
-      <q-btn color="secondary" label="Sign up" />
-    </div>
-  </div>
+  </form>
   <div class="q-pa-md constraint-signup">
     <small>
       Have an account? <a href="#"><strong>Log in</strong></a>
@@ -64,16 +68,27 @@
 
 <script>
 import { ref } from "vue";
-
+// import { projfirestore } from "../firebase/firebase";
 export default {
+  methods: {
+    signup() {
+      let userdetail = {
+        mobile_number: this.mobile_number,
+        full_name: this.full_name,
+        user_name: this.user_name,
+        password: this.password,
+      };
+      projfirestore.collection("userdetail").add(userdetail);
+    },
+  },
   setup() {
     return {
-      text: ref(""),
-      mobile_number: ref(""),
-      full_name: ref(""),
-      user_name: ref(""),
-      password: ref(""),
-      dense: ref(false),
+      form: {
+        mobile_number: ref(""),
+        full_name: ref(""),
+        user_name: ref(""),
+        password: ref(""),
+      },
     };
   },
 };
