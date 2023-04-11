@@ -51,9 +51,7 @@
         <q-input
           class="col col-sm-8"
           v-model="post.location"
-
           :loading="locationLoading"
-
           label="Location"
           dense
         >
@@ -128,15 +126,7 @@
 </template>
 
 <script>
-import { uid } from "quasar";<<<<<<< jameel
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "CameraPage",
-  data() {
-    return {
-      post: {
-        id: uid(),
+import { uid } from "quasar";
 require("md-gum-polyfill");
 import { defineComponent } from "vue";
 import { date } from "quasar";
@@ -155,15 +145,11 @@ export default defineComponent({
     return {
       post: {
         id: generatePostId(),
-
         caption: "",
         location: "",
         photo: null,
         date: Date.now(),
       },
-
-    };
-
       imageCaptured: false,
       imageUpload: [],
       hasCameraSupport: true,
@@ -181,7 +167,6 @@ export default defineComponent({
     posts() {
       return JSON.parse(localStorage.getItem("posts")) || [];
     },
-
   },
   methods: {
     initCamera() {
@@ -191,10 +176,6 @@ export default defineComponent({
         })
         .then((stream) => {
           this.$refs.video.srcObject = stream;
-
-        });
-    },
-
         })
         .catch((error) => {
           this.hasCameraSupport = false;
@@ -341,19 +322,15 @@ export default defineComponent({
     formatDate(timestamp) {
       return date.formatDate(timestamp, "MMM D h:mmA");
     },
-
   },
   mounted() {
     this.initCamera();
   },
-
-
   beforeRouteLeave() {
     if (this.hasCameraSupport) {
       this.disableCamera();
     }
   },
-
 });
 </script>
 
