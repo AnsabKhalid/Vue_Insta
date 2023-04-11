@@ -119,7 +119,7 @@
 
       <q-card-section>
         <div>{{ post.caption }}</div>
-        <div class="text-caption text-grey">{{ post.date }}</div>
+        <div class="text-caption text-grey">{{ formatDate(post.date) }}</div>
       </q-card-section>
     </q-card>
   </q-page>
@@ -129,6 +129,7 @@
 import { uid } from "quasar";
 require("md-gum-polyfill");
 import { defineComponent } from "vue";
+import { date } from "quasar";
 
 let postIdCounter = 0;
 
@@ -315,6 +316,11 @@ export default defineComponent({
       posts.splice(index, 1);
       localStorage.setItem("posts", JSON.stringify(posts));
       console.log("Post deleted from local storage:", this.post);
+
+      window.location.reload();
+    },
+    formatDate(timestamp) {
+      return date.formatDate(timestamp, "MMM D h:mmA");
     },
   },
   mounted() {
