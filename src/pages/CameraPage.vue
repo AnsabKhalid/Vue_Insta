@@ -303,6 +303,8 @@ export default defineComponent({
         this.post.id = generatePostId();
         this.posts.unshift(this.post);
         localStorage.setItem("posts", JSON.stringify(this.posts));
+
+        window.location.reload();
       }
       // Clear input fields
       this.post.caption = "";
