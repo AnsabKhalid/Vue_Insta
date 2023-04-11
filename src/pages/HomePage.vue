@@ -7,7 +7,7 @@
           <q-item>
             <q-item-section avatar>
               <q-avatar>
-                <img src="https://cdn.quasar.dev/img/parallax2.jpg">
+                <img src="https://i.imgur.com/GXbtlBv.jpeg">
               </q-avatar>
             </q-item-section>
 
@@ -33,7 +33,7 @@
         <q-item class="fixed">
           <q-item-section avatar>
             <q-avatar size="55px">
-              <img src="https://cdn.quasar.dev/img/parallax2.jpg">
+              <img src="https://i.imgur.com/GXbtlBv.jpeg">
             </q-avatar>
           </q-item-section>
 
@@ -64,35 +64,35 @@ export default defineComponent({
           caption: 'Golden Gate Bridge',
           date: Date.now(),
           location: 'San Francisco, United States',
-          imageUrl: 'https://cdn.quasar.dev/img/parallax2.jpg'
+          imageUrl: 'https://i.imgur.com/GXbtlBv.jpeg'
         },
         {
           id: 2,
           caption: 'Eiffel Tower',
           date: Date.now(),
           location: 'Paris, France',
-          imageUrl: 'https://cdn.quasar.dev/img/parallax2.jpg'
+          imageUrl: 'https://i.imgur.com/GXbtlBv.jpeg'
         },
         {
           id: 3,
           caption: 'Sydney Opera House',
           date: Date.now(),
           location: 'Sydney, Australia',
-          imageUrl: 'https://cdn.quasar.dev/img/parallax2.jpg'
+          imageUrl: 'https://i.imgur.com/GXbtlBv.jpeg'
         },
         {
           id: 4,
           caption: 'Taj Mahal',
           date: Date.now(),
           location: 'Agra, India',
-          imageUrl: 'https://cdn.quasar.dev/img/parallax2.jpg'
+          imageUrl: 'https://i.imgur.com/GXbtlBv.jpeg'
         },
         {
           id: 5,
           caption: 'Great Wall of China',
           date: Date.now(),
           location: 'Beijing, China',
-          imageUrl: 'https://cdn.quasar.dev/img/parallax2.jpg'
+          imageUrl: 'https://i.imgur.com/GXbtlBv.jpeg'
         }
       ]
     }
