@@ -10,10 +10,7 @@
           icon="eva-camera-outline"
           dense
         />
-        <q-separator vertical spaced />
-        <q-toolbar-title class="text-grand-hotel text-bold">
-          Vue-Insta App
-        </q-toolbar-title>
+
         <q-btn
           flat
           round
@@ -22,6 +19,48 @@
           icon="eva-home-outline"
           dense
         />
+        <q-separator vertical spaced />
+        <q-toolbar-title class="text-grand-hotel text-bold display-inline">
+          <i
+            class="fa fa-instagram"
+            style="font-size: 25px; color: #ff0066;"
+          ></i>
+          Vue-Insta App
+        </q-toolbar-title>
+        <q-separator vertical spaced />
+        <div class="q-pa-md">
+          <q-btn-dropdown flat text-color="black" color="white" label="Jamil">
+            <q-list>
+              <q-item
+                v-if="user == 1"
+                clickable
+                v-close-popup
+                @click="onItemClick"
+              >
+                <q-item-section>
+                  <q-item-label>Signin</q-item-label>
+                </q-item-section>
+              </q-item>
+
+              <q-item clickable v-close-popup @click="onItemClick">
+                <q-item-section>
+                  <q-item-label>Signup</q-item-label>
+                </q-item-section>
+              </q-item>
+              <q-item clickable v-close-popup @click="onItemClick">
+                <q-item-section>
+                  <q-item-label>Logout</q-item-label>
+                </q-item-section>
+              </q-item>
+
+              <q-item clickable v-close-popup @click="onItemClick">
+                <q-item-section>
+                  <q-item-label>Profile Settings</q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
+        </div>
       </q-toolbar>
     </q-header>
 
@@ -49,6 +88,11 @@ const linksList = [];
 
 export default defineComponent({
   name: "MainLayout",
+  data() {
+    return {
+      user: 1,
+    };
+  },
 });
 </script>
 
