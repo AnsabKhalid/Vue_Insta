@@ -110,6 +110,7 @@
           color="green"
           icon="eva-edit-2"
           style="float: right;"
+          @click="editPostData(post)"
         ></q-btn>
       </q-item>
 
@@ -154,6 +155,7 @@ export default defineComponent({
       imageUpload: [],
       hasCameraSupport: true,
       locationLoading: false,
+      editPost: null,
     };
   },
   computed: {
@@ -286,25 +288,29 @@ export default defineComponent({
       this.locationLoading = false;
     },
     savePost() {
-      let posts = JSON.parse(localStorage.getItem("posts")) || [];
-      posts.push(this.post);
-      localStorage.setItem("posts", JSON.stringify(posts));
-
-      this.post = {
-        id: this.post.id,
-        caption: "",
-        location: "",
-        photo: null,
-        date: Date.now(),
-      };
+      if (this.editPost) {
+        // Update existing post
+        let index = this.posts.findIndex(
+          (post) => post.id === this.editPost.id
+        );
+        this.posts[index].caption = this.post.caption;
+        this.posts[index].location = this.post.location;
+        this.posts[index].photo = this.post.photo;
+        localStorage.setItem("posts", JSON.stringify(this.posts));
+        this.editPost = null;
+      } else {
+        // Add new post
+        this.post.id = generatePostId();
+        this.posts.unshift(this.post);
+        localStorage.setItem("posts", JSON.stringify(this.posts));
+      }
+      // Clear input fields
+      this.post.caption = "";
+      this.post.location = "";
+      this.post.photo = null;
       this.imageCaptured = false;
       this.imageUpload = [];
-      this.hasCameraSupport = true;
-      this.locationLoading = false;
-
-      console.log(posts);
-
-      window.location.reload();
+      this.initCamera();
     },
     deletePost() {
       let posts = JSON.parse(localStorage.getItem("posts")) || [];
@@ -321,6 +327,12 @@ export default defineComponent({
     },
     formatDate(timestamp) {
       return date.formatDate(timestamp, "MMM D h:mmA");
+    },
+    editPostData(post) {
+      this.editPost = post;
+      this.post.caption = post.caption;
+      this.post.location = post.location;
+      this.post.photo = post.photo;
     },
   },
   mounted() {

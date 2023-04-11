@@ -23,7 +23,7 @@
         <q-toolbar-title class="text-grand-hotel text-bold display-inline">
           <i
             class="fa fa-instagram"
-            style="font-size: 25px; color: #ff0066;"
+            style="font-size: 25px; color: #ff0066; padding-right: 20px;"
           ></i>
           Vue-Insta App
         </q-toolbar-title>
