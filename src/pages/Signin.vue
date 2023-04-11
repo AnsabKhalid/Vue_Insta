@@ -29,7 +29,7 @@
       <q-btn color="primary" label="Log in" />
     </div>
   </div>
-  <div class="q-pa-md constraint-signin">
+  <div class="q-pa-md constraint-signin" to="/signin">
     <small>
       Don't Have an account? <a href="#"><strong>Sign up</strong></a>
     </small>
