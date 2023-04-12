@@ -289,7 +289,6 @@ export default defineComponent({
     },
     savePost() {
       if (this.editPost) {
-        // Update existing post
         let index = this.posts.findIndex(
           (post) => post.id === this.editPost.id
         );
@@ -299,14 +298,12 @@ export default defineComponent({
         localStorage.setItem("posts", JSON.stringify(this.posts));
         this.editPost = null;
       } else {
-        // Add new post
         this.post.id = generatePostId();
         this.posts.unshift(this.post);
         localStorage.setItem("posts", JSON.stringify(this.posts));
 
         window.location.reload();
       }
-      // Clear input fields
       this.post.caption = "";
       this.post.location = "";
       this.post.photo = null;
