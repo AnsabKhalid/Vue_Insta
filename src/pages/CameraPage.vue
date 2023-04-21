@@ -141,7 +141,6 @@ function generatePostId() {
 
 export default defineComponent({
   name: "CameraPage",
-  post_name: "posts",
   data() {
     return {
       post: {
